@@ -1,0 +1,9 @@
+{% extends hours.twig %}
+{% block title %}List{% endblock %}
+{% block content %}
+<ul id="navigation">
+        {% for item in hours %}
+		<li>{{ item.title }} By {{ item.author}}</li>
+        {% endfor %}
+	</ul>
+{% endblock %}
