@@ -1,0 +1,62 @@
+{% extends 'base.twig' %}
+{% block title %}Create{% endblock %}
+{% block page_title %}<h3>Rport your work</h3>{% endblock %}
+{% block content %}
+<div class="span6">
+	<!-- day selector -->
+	<div>
+		<div class="btn-toolbar">
+			<div class="btn-group">
+				<h4>{{ text.create.btnToolbarTitle }}</h4>
+				<button id="day0" class="btnDay btn btn-small active" type="button">Monday</button>
+				<button id="day1" class="btnDay btn btn-small" type="button">Tuesday</button>
+				<button id="day2" class="btnDay btn btn-small" type="button">Wednesday</button>
+				<button id="day3" class="btnDay btn btn-small" type="button">Thursday</button>
+				<button id="day4" class="btnDay btn btn-small" type="button">Friday</button>
+				<button id="day5" class="btnDay btn btn-small" type="button">Saturday</button>
+				<button id="day6" class="btnDay btn btn-small" type="button">Sunday</button>
+			</div>
+		</div>
+		<div class="">
+			<h4>How many hours you worked?</h4>
+			<table>
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Hours</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr  class="typeRow" class="">
+						<th>Normal</th>
+						<th><input id="" type="text" name="hour-type-normal" value="8" class="span1"></th>
+					</tr>
+					<tr  class="typeRow" class="">
+						<th>Overtime</th>
+						<th><input id="" type="text" name="hour-type-overtime" value="" class="span1"></th>
+					</tr>
+					<tr  class="typeRow" class="">
+						<th>Overtime Special</th>
+						<th><input id="" type="text" name="hour-type-overtime2" value="" class="span1"></th>
+					</tr>
+					<tr  class="typeRow" class="">
+						<th>Holidays</th>
+						<th><input id="" type="text" name="hour-type-holiday" value="" class="span1"></th>
+					</tr>
+					<tr  class="typeRow" class="">
+						<th>Absent</th>
+						<th><input id="" type="text" name="hour-type-absent" value="" class="span1"></th>
+					</tr>
+				</tbody>
+			</table>
+			<button id="btnSaveHours" class="btnSave btn" type="button">Save</button>
+		</div>
+	</div>
+	<!-- time -->
+	<div class="span6">
+	</div>
+</div>
+{% endblock %}
+{% block js %}
+	<script src="/js/create.js"></script>
+{% endblock %}

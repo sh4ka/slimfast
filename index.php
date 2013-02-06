@@ -10,21 +10,24 @@ $app = new \Slim\Slim(array(
 		'templates.path' => 'templates/',
 	));
 
-// $app->add(new \Slim\Extras\Middleware\HttpBasicAuth('username', 'password'));
 
-$app->get('/report', function() use ($app)
+$app->get('/(:controller(/:method(/:args+)))', function($controller = 'home', $method = 'index', $args = array()) use ($app)
 	{
-		require_once 'models/hours.php';
-		$hourModel = new Hours();
-		$hours = $hourModel->returnHours();
-		//var_dump($hours);
-		$app->render('hours_list.twig', array('hours' => $hours));
+		if (file_exists('controller/' . $controller . '.php'))
+		{
+			require_once 'controller/' . $controller . '.php';
+			$controllerObj = new $controller($app);
+			$controllerObj->controller = $controller;
+			$controllerObj->method = $method;
+			//$controllerObj->initView();
+			$controllerObj->callMethod($controllerObj->method, $args);
+		}
+		else
+		{
+			$app->halt(404, 'You shall not pass!');
+		}
 	});
 
-$app->get('/', function()
-	{
-		echo "Index";
-	});
 
 $app->run();
 ?>
