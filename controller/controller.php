@@ -35,7 +35,7 @@ class Controller
 
 	protected function getText()
 	{
-		$getText = yaml_parse_file('texts/es.yml');
+		$getText = yaml_parse_file('../texts/en.yml');
 		return $getText;
 	}
 }

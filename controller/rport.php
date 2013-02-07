@@ -1,6 +1,6 @@
 <?php
-require_once 'controller/controller.php';
-require_once 'models/hours.php';
+require_once '../controller/controller.php';
+require_once '../models/hours.php';
 /**
  * Description of hours
  *
