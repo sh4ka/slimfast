@@ -13,8 +13,12 @@ $(document).ready(function(){
 		$('li#'+section).addClass('active');
 	}
 
-	window.Rport.showAlert = function(htmlText){
+	window.Rport.showAlert = function(htmlText, type){
+		if(type == null){
+			type = ''
+		}
 		clone = $('#alertBox').clone();
+		clone.addClass(type);
 		$('#alertContainer').children().remove();
 		$('#alertContainer').append(clone);
 		$(clone).removeClass('hidden');

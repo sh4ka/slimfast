@@ -5,12 +5,11 @@ require_once '../controller/controller.php';
  *
  * @author Jesús Flores <jesusfloressanjose@gmail.com>
  */
-class Home extends Controller
+class HomeController extends Controller
 {
-	public function __construct($app)
+	public function __construct($app, $request)
 	{
-		$this->app = $app;
-		return;
+		parent::__construct($app, $request);
 	}
 
 	public function index()

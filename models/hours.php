@@ -1,7 +1,7 @@
 
 <?php
 
-class Hours
+class HoursModel
 {
 	var $connection = null;
 	var $db = null;

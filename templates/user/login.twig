@@ -1,0 +1,20 @@
+{% extends 'base.twig' %}
+{% block title %}Rport Login{% endblock %}
+{% block page_title %}<h3>Rport login</h3>{% endblock %}
+{% block content %}
+<form id="frmLogin" method="post" action="/user/login">
+	<fieldset>
+		<label for="tiUser">{{ text.user.userLabel }}</label>
+		<input type="text" name="user" id="tiUser" class="span3">
+		<label for="tiPassword">{{ text.user.passwordLabel }}</label>
+		<input type="password" name="password" id="tiPassword" class="span3">
+		<br>
+		<a href="/user/create"><small>{{ text.user.newUserLinkTitle }}</small></a>
+		<br>
+		<input class="btn" type="submit" value="Enter">
+	</fieldset>
+</form>
+{% endblock %}
+{% block js %}
+	<!-- <script src="js/home.js"></script> -->
+{% endblock %}

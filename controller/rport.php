@@ -1,17 +1,19 @@
 <?php
+
 require_once '../controller/controller.php';
 require_once '../models/hours.php';
+
 /**
  * Description of hours
  *
  * @author Jesús Flores <jesusfloressanjose@gmail.com>
  */
-class Rport extends Controller
+class RportController extends Controller
 {
-	public function __construct($app)
+
+	public function __construct($app, $request)
 	{
-		$this->app = $app;
-		return;
+		parent::__construct($app, $request);
 	}
 
 	public function index()
@@ -20,20 +22,28 @@ class Rport extends Controller
 		$viewData = array(
 			'text' => $getText
 		);
-		$this->app->render($this->controller.'/'.$this->method.'.twig', $viewData);
+		$this->app->render($this->controller . '/' . $this->method . '.twig', $viewData);
 	}
 
 	public function create()
 	{
 		$getText = $this->getText();
-		$hourModel = new Hours();
-		$hours = $hourModel->returnHours();
-		$viewData = array(
-			'text' => $getText,
-			'hours' => $hours
-		);
-		$this->app->render($this->controller.'/'.$this->method.'.twig', $viewData);
+		if ($this->assertUserIsLogged() == false)
+		{
+			$this->app->redirect('/user/login');
+		}
+		else
+		{
+			$hourModel = new HoursModel();
+			$hours = $hourModel->returnHours();
+			$viewData = array(
+				'text' => $getText,
+				'hours' => $hours
+			);
+			$this->app->render($this->controller . '/' . $this->method . '.twig', $viewData);
+		}
 	}
+
 }
 
 ?>
