@@ -8,7 +8,7 @@ $twigView = new \Slim\Extras\Views\Twig();
 $app = new \Slim\Slim(array(
 		'view' => $twigView,
 		'debug' => true,
-		'templates.path' => '../templates/',
+		'templates.path' => '../views/',
 	));
 
 $app->get('/(:controller(/:method(/:args+)))', function($controller = 'home', $method = 'index', $args = array()) use ($app)
