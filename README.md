@@ -1,4 +1,3 @@
-rport README
-=====
+slimfast
 
-Rport is a tool made with love. Its used to report your weekly hours to your managers fast and easy.
+Slim framework setup ready to use as mvc application.
