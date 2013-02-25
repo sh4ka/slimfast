@@ -6,7 +6,6 @@
  * @author Jesús Flores <jesusfloressanjose@gmail.com>
  */
 
-include_once '../models/session.php';
 include_once '../class/util.php';
 
 class Controller
@@ -17,7 +16,6 @@ class Controller
 	var $controller;
 	var $method;
 
-	var $session;
 	var $view;
 	var $viewData; // array with template vars
 
@@ -25,7 +23,6 @@ class Controller
 	{
 		$this->app = $app;
 		$this->request = $request;
-		$this->session = new Session();
 	}
 
 	public function callMethod($method, $args = array())
@@ -40,11 +37,6 @@ class Controller
 			throw new Exception(sprintf('The required method "%s" does not exist for %s', $method, get_class($this)));
 		}
 		return $result;
-	}
-
-	public function assertUserIsLogged()
-	{
-		return false;
 	}
 
 	protected function getText()
@@ -70,30 +62,6 @@ class Controller
 		);
 		$this->viewData = $viewData;
 		return true;
-	}
-
-	public function getSecurity()
-	{
-		$sessionId = $this->session->getId();
-		$token = sha1($sessionId.time());
-		$this->session->setVar('secureFormToken', $token);
-		return $token;
-	}
-
-	public function validateSecurity()
-	{
-		$result = false;
-		$secureFormToken = $this->request->params('secureFormToken');
-		$sessionToken = $this->session->getVar('secureFormToken');
-		if($secureFormToken != null && $secureFormToken == $sessionToken)
-		{
-			$result = true;
-		}
-		if($result == false)
-		{
-			$this->app->halt(401, 'Invalid security token.');
-		}
-		return $result;
 	}
 
 }
