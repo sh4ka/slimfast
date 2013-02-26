@@ -1,5 +1,6 @@
 <h1>Slimfast</h1>
+<h2>PHP in your face</h2>
 
-Slim framework setup ready to use as mvc application.
+PHP Slim framework setup ready to use as mvc application.
 
-You can clone this project and you will have a very basic setup of mvc with jquery, twig and bootstrap.
+You can clone this project and you will have a very basic setup of a php mvc with jquery, twig and bootstrap.
